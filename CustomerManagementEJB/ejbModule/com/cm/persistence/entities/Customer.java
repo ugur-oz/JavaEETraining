@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,12 @@ import com.cm.persistence.enums.Gender;
 import com.cm.persistence.enums.Relationship;
 
 @Entity
+@NamedQuery(
+		name = Customer.QUERY_GETALL,
+		query = "SELECT c FROM Customer c" )
 public class Customer {
+	
+	public static final String QUERY_GETALL = "Customer.GetAll";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

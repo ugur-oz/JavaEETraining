@@ -43,7 +43,7 @@ public class CustomerBean implements CustomerDAO {
 	@Override
 	public List<Customer> getAllCustomers() {
 		return
-				em.createQuery("SELECT c FROM Customer c", Customer.class)
+				em.createNamedQuery(Customer.QUERY_GETALL, Customer.class)
 				.getResultList();
 	}
 
