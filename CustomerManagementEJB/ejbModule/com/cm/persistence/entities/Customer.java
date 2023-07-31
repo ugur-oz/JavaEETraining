@@ -1,11 +1,14 @@
 package com.cm.persistence.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.cm.persistence.enums.Gender;
 import com.cm.persistence.enums.Relationship;
@@ -26,6 +29,30 @@ public class Customer {
 	private Relationship relationship;
 	
 	private Date birthday;
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Adress> adress;
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Communication> communications;
+
+	
+	
+	public List<Adress> getAdress() {
+		return adress;
+	}
+
+	public void setAdress(List<Adress> adress) {
+		this.adress = adress;
+	}
+
+	public List<Communication> getCommunications() {
+		return communications;
+	}
+
+	public void setCommunications(List<Communication> communications) {
+		this.communications = communications;
+	}
 
 	public int getId() {
 		return id;
