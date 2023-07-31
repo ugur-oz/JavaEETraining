@@ -1,5 +1,6 @@
 package com.cm.persistence.entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.cm.persistence.enums.Gender;
 import com.cm.persistence.enums.Relationship;
@@ -20,8 +24,12 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@NotNull
+	@Size(min=1, max=50)
 	private String firstName;
 	
+	@NotNull
+	@Size(min=1, max=100)
 	private String lastName;
 	
 	private Gender gender;
@@ -36,6 +44,8 @@ public class Customer {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Communication> communications;
 
+	@Version
+	private Timestamp lastChanged;
 	
 	public List<Adress> getAdress() {
 		return adress;
