@@ -19,32 +19,32 @@ public class CustomerBean implements CustomerDAO {
 	
 	@Override
 	public Customer create(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(customer);
+		return customer;
 	}
 
 	@Override
 	public Customer update(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(customer);
 	}
 
 	@Override
 	public void remove(int id) {
-		// TODO Auto-generated method stub
+		Customer toBeDeleted = getCustomer(id);
+		em.find(Customer.class,toBeDeleted);
 		
 	}
 
 	@Override
 	public Customer getCustomer(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Customer.class, id);
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		return
+				em.createQuery("SELECT c FROM Customer c", Customer.class)
+				.getResultList();
 	}
 
 }
