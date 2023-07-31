@@ -37,7 +37,6 @@ public class Customer {
 	private List<Communication> communications;
 
 	
-	
 	public List<Adress> getAdress() {
 		return adress;
 	}
