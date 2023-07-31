@@ -1,6 +1,6 @@
 package com.cm.persistence.enums;
 
-enum CommunicationType {
+public enum CommunicationType {
 	
 	Telephone,
 	Fax,
